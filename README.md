@@ -1,2 +1,0 @@
-sphinxcontrib_robotframework
-============================
