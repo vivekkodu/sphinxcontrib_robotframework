@@ -11,6 +11,11 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   todos
+
+Todos:
+
+.. todolist::
 
 
 Indices and tables
