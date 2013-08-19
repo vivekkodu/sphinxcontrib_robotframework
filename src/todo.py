@@ -11,7 +11,7 @@ def setup(app):
     app.add_directive('todolist', TodolistDirective)
     app.connect('doctree-resolved', process_todo_nodes)
     app.connect('env-purge-doc', purge_todos)
-    app.connext('source-read',run_robot)
+    app.connect('source-read',run_robot)
 
 
 from docutils import nodes
