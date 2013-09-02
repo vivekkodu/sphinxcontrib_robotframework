@@ -19,5 +19,8 @@ setup(
         'sphinx',
         'robotframework',
         'Pygments',
-    ]
+    ],
+    extras_require={"docs": [
+        "robotframework-selenium2library",
+    ]}
 )
