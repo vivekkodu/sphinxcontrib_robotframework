@@ -11,6 +11,8 @@ one test case, like:
 
    Library  Selenium2Library
 
+   Suite teardown  Close all browsers
+
 one ``*** test cases ***``-header may be followed by as many
 tests as required, like:
 
