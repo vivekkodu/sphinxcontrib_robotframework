@@ -9,8 +9,7 @@ setup(
     author_email='1990vivekkumarverma@gmail.com',
     license='GPL',
     py_modules=[
-      'shinxcontrib_robotframework',
-      'todo'  # just for learning purposes, will be removed later
+      'shinxcontrib_robotframework'
     ],
     packages=find_packages("src", exclude=["ez_setup"]),
     package_dir={"": "src"},
