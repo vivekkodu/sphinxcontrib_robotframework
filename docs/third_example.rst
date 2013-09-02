@@ -9,7 +9,9 @@ one test case, like:
 
    *** Settings ***
 
-   Resource  third_example.robot
+   Resource  third_setup.robot
+
+   Suite Teardown  Close all browsers
 
 
 one ``*** test cases ***``-header may be followed by as many
@@ -19,10 +21,10 @@ tests as required, like:
 
    *** test cases ***
 
-   Take screenshot of pypi
-       Open browser  http://pypi.python.org/pypi/
-       Capture page screenshot  pypi.png
+   Take screenshot of Google
+       Open browser  http://google.com/
+       Capture page screenshot  google.png
 
 And this documentation can include the captured screenshots:
 
-.. image:: pypi.png
+.. image:: google.png
