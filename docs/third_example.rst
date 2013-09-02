@@ -9,9 +9,8 @@ one test case, like:
 
    *** Settings ***
 
-   Library  Selenium2Library
+   Resource  third_example.robot
 
-   Suite teardown  Close all browsers
 
 one ``*** test cases ***``-header may be followed by as many
 tests as required, like:
