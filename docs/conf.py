@@ -25,9 +25,9 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinxcontrib_robotframework', 'todo']  # remove todo once sphinxcontrib_robotframework works
+extensions = ['sphinxcontrib_robotframework']
 
-todo_include_todos = True  # remove this once todo is removed
+sphinxcontrib_robotframework_enabled = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

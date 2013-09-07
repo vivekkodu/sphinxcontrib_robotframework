@@ -1,27 +1,16 @@
-.. sphinxcontrib_robotframework documentation master file, created by
-   sphinx-quickstart on Sat Aug 03 15:09:02 2013.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+sphinxcontrib_robotframework
+============================
 
-Welcome to sphinxcontrib_robotframework's documentation!
-========================================================
+``sphinxcontrib_robotframework`` is a Sphinx-extensions, which executes
+embedded Robot Framework -tests during Sphinx-documentation compilation.
 
-Contents:
+With the robot framework plain text syntax, a minimal test suite
+would consists of ``*** test cases ***`` header and at least
+one test case, like:
 
 .. toctree::
    :maxdepth: 2
 
-   todos
-
-Todos:
-
-.. todolist::
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+   first_example
+   second_example
+   third_example
