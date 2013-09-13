@@ -3,13 +3,24 @@
 import robot
 import tempfile
 
+from sphinx.directives import CodeBlock
 
-def setup(app):
-    app.add_config_value('sphinxcontrib_robotframework_enabled', True, True)
-    app.connect('doctree-resolved', run_robot)
+
+class RobotAwareCodeBlock(CodeBlock):
+
+    def run(self):
+        if u"robotframework" in self.arguments:
+            document = self.state_machine.document
+            robot_source = u"\n".join(self.content)
+            if not hasattr(document, '_robot_source'):
+                document._robot_source = robot_source
+            else:
+                document._robot_source += u"\n" + robot_source
+        return super(RobotAwareCodeBlock, self).run()
 
 
 def run_robot(app, doctree, docname):
+
     if not app.config.sphinxcontrib_robotframework_enabled:
         return
 
@@ -20,29 +31,11 @@ def run_robot(app, doctree, docname):
     # import os
     # robot.run(os.path.join(app.srcdir, docname) + ".rst")
 
-    def collect_robot_nodes(node, collected=[]):
-        robot_tagname = 'literal_block'
-        robot_classes = frozenset(['code', 'robotframework'])
-        is_robot_node = (
-            node.tagname == robot_tagname
-            and robot_classes <= frozenset(
-                node.attributes.get('classes'))
-        )
-        if is_robot_node:
-            collected.append(node)
-        else:
-            for node in node.children:
-                collected = collect_robot_nodes(node, collected)
-        return collected
-    robot_nodes = collect_robot_nodes(doctree)
-
-    if not robot_nodes:
+    if not hasattr(doctree, '_robot_source'):
         return
 
-    robot_data = "\n\n".join([node.rawsource for node in robot_nodes])
-
     robot_file = tempfile.NamedTemporaryFile(dir=app.srcdir, suffix='.robot')
-    robot_file.write(robot_data.encode('utf-8'))
+    robot_file.write(doctree._robot_source.encode('utf-8'))
     robot_file.flush()  # flush buffer into file
 
     options = {
@@ -52,5 +45,12 @@ def run_robot(app, doctree, docname):
         'report': 'NONE'
     }
     robot.run(robot_file.name, **options)
+    app.env.process_images(docname, doctree)
 
     robot_file.close()  # close file (and delete it, because it is a tempfile)
+
+
+def setup(app):
+    app.add_config_value('sphinxcontrib_robotframework_enabled', True, True)
+    app.add_directive('code', RobotAwareCodeBlock)
+    app.connect('doctree-resolved', run_robot)
