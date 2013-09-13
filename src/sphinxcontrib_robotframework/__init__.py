@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+import docutils
 import robot
 import tempfile
 
@@ -7,6 +9,11 @@ from sphinx.directives import CodeBlock
 
 
 class RobotAwareCodeBlock(CodeBlock):
+
+    option_spec = dict(
+        docutils.parsers.rst.directives.body.CodeBlock.option_spec.items()
+        + CodeBlock.option_spec.items()
+    )
 
     def run(self):
         if u"robotframework" in self.arguments:
@@ -16,6 +23,8 @@ class RobotAwareCodeBlock(CodeBlock):
                 document._robot_source = robot_source
             else:
                 document._robot_source += u"\n" + robot_source
+            if 'hidden' in (self.options.get('class', []) or []):
+                return []  # suppress nodes with :class: hidden
         return super(RobotAwareCodeBlock, self).run()
 
 
