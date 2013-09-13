@@ -18,6 +18,7 @@ setup(
         'Pygments',
     ],
     extras_require={"docs": [
+        "Pillow",  # the currently maintained fork of PIL
         "robotframework-selenium2library",
     ]}
 )
