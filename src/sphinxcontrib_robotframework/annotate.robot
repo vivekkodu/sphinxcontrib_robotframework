@@ -206,17 +206,18 @@ Remove elements
     \  Remove element  ${id}
 
 Update element style
-    [Arguments]  ${id}  ${name}  ${value}
+    [Arguments]  ${locator}  ${name}  ${value}
+    ${selector} =  Normalize annotation locator  ${locator}
     ${name} =  Replace string  ${name}  '  \\'
     ${value} =  Replace string  ${value}  '  \\'
     Execute Javascript
     ...    return (function(){
-    ...        jQuery('#${id}').css({
+    ...        jQuery('${selector}').css({
     ...            '${name}': '${value}'
     ...        });
     ...        return true;
     ...    })();
-    [return]  ${id}
+    [return]  ${selector}
 
 Align elements horizontally
     [Arguments]  @{locators}

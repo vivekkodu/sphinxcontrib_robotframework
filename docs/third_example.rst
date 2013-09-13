@@ -1,11 +1,13 @@
-Example Robot Framework test
-============================
+Annotated screenshots
+=====================
 
-With the robot framework plain text syntax, a minimal test suite
-would consists of ``*** test cases ***`` header and at least
-one test case, like:
+``sphinxcontrib_robotframework`` comes with a useful webpage annotation library
+(originally developed for ``plone.app.robotframework``), which allows to
+annotate any webpage with jQuery-library and capture cropped screenshot of the
+results.
 
 .. code:: robotframework
+   :class: hidden
 
    *** Settings ***
 
@@ -13,18 +15,22 @@ one test case, like:
 
    Suite Teardown  Close all browsers
 
-
-one ``*** test cases ***``-header may be followed by as many
-tests as required, like:
-
 .. code:: robotframework
 
-   *** test cases ***
+   *** Test Cases ***
 
-   Take screenshot of Google
-       Open browser  http://google.com/
-       Capture page screenshot  google.png
+   Take an annotated screenshot of RobotFramework.org
+       Open browser  http://robotframework.org/
+       Update element style  header  margin-top  1em
+       Update element style  header h1  outline  3px dotted red
+       ${note1} =  Add note
+       ...    header
+       ...    PS. This is really cool stuff...
+       ...    width=250  position=bottom
+       Capture and crop page screenshot  robotframework.png
+       ...    header  ${note1}
 
-And this documentation can include the captured screenshots:
+For example, the simple test case above results in a nice cropped image
+below...
 
-.. image:: google.png
+.. image:: robotframework.png
