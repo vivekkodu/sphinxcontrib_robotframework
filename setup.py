@@ -8,9 +8,6 @@ setup(
     author='Vivek',
     author_email='1990vivekkumarverma@gmail.com',
     license='GPL',
-    py_modules=[
-      'shinxcontrib_robotframework'
-    ],
     packages=find_packages("src", exclude=["ez_setup"]),
     package_dir={"": "src"},
     zip_safe=False,
@@ -21,6 +18,7 @@ setup(
         'Pygments',
     ],
     extras_require={"docs": [
+        "Pillow",  # the currently maintained fork of PIL
         "robotframework-selenium2library",
     ]}
 )
