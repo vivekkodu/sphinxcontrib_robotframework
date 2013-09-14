@@ -59,7 +59,8 @@ def run_robot(app, doctree, docname):
     if not hasattr(doctree, '_robot_source'):
         return
 
-    robot_file = tempfile.NamedTemporaryFile(dir=app.srcdir, suffix='.robot')
+    robot_dir = os.path.dirname(os.path.join(app.srcdir, docname))
+    robot_file = tempfile.NamedTemporaryFile(dir=robot_dir, suffix='.robot')
     robot_file.write(doctree._robot_source.encode('utf-8'))
     robot_file.flush()  # flush buffer into file
 
