@@ -65,7 +65,7 @@ def run_robot(app, doctree, docname):
     robot_file.flush()  # flush buffer into file
 
     options = {
-        'outputdir': app.srcdir,
+        'outputdir': robot_dir,
         'output': 'NONE',
         'log': 'NONE',
         'report': 'NONE'
