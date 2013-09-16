@@ -71,7 +71,14 @@ def run_robot(app, doctree, docname):
         'report': 'NONE'
     }
     robot.run(robot_file.name, **options)
-    app.env.process_images(docname, doctree)
+
+    # Re-process images to include robot generated images:
+    if not os.path.sep in docname:
+        app.env.process_images(docname, doctree)
+    else:
+        # XXX: Not sure why, but this seems to be necessary to properly
+        # locate images in a large Sphinx-documentation
+        app.env.process_images(os.path.dirname(docname), doctree)
 
     robot_file.close()  # close file (and delete it, because it is a tempfile)
 
