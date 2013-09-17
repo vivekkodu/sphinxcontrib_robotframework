@@ -1,10 +1,10 @@
 Annotated screenshots
 =====================
 
-``sphinxcontrib_robotframework`` comes with a useful webpage annotation library
-(originally developed for ``plone.app.robotframework``), which allows to
-annotate any webpage with jQuery-library and capture cropped screenshot of the
-results.
+``sphinxcontrib_robotframework`` can be combined with a useful webpage
+annotation library (originally developed for ``plone.app.robotframework``),
+which allows to annotate any webpage with jQuery-library and capture cropped
+screenshot of the results.
 
 .. code:: robotframework
    :class: hidden

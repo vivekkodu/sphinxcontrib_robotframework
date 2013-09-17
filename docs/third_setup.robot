@@ -1,5 +1,4 @@
 *** Settings ***
 
 Library  Selenium2Library
-
-Resource  sphinxcontrib_robotframework/annotate.robot
+Library  Selenium2Screenshots
