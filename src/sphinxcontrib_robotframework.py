@@ -8,22 +8,6 @@ import tempfile
 from sphinx.directives import CodeBlock
 
 
-class Image(object):
-
-    def crop_image(self, output_dir, filename, left, top, width, height):
-        """Crop the saved image with given filename for the given dimensions.
-        """
-        from PIL import Image
-
-        img = Image.open(os.path.join(output_dir, filename))
-        box = (int(left), int(top), int(left + width), int(top + height))
-
-        area = img.crop(box)
-
-        with open(os.path.join(output_dir, filename), 'wb') as output:
-            area.save(output, 'png')
-
-
 class RobotAwareCodeBlock(CodeBlock):
 
     option_spec = dict(
@@ -59,18 +43,26 @@ def run_robot(app, doctree, docname):
     if not hasattr(doctree, '_robot_source'):
         return
 
-    robot_file = tempfile.NamedTemporaryFile(dir=app.srcdir, suffix='.robot')
+    robot_dir = os.path.dirname(os.path.join(app.srcdir, docname))
+    robot_file = tempfile.NamedTemporaryFile(dir=robot_dir, suffix='.robot')
     robot_file.write(doctree._robot_source.encode('utf-8'))
     robot_file.flush()  # flush buffer into file
 
     options = {
-        'outputdir': app.srcdir,
+        'outputdir': robot_dir,
         'output': 'NONE',
         'log': 'NONE',
         'report': 'NONE'
     }
     robot.run(robot_file.name, **options)
-    app.env.process_images(docname, doctree)
+
+    # Re-process images to include robot generated images:
+    if not os.path.sep in docname:
+        app.env.process_images(docname, doctree)
+    else:
+        # XXX: Not sure why, but this seems to be necessary to properly
+        # locate images in a large Sphinx-documentation
+        app.env.process_images(os.path.dirname(docname), doctree)
 
     robot_file.close()  # close file (and delete it, because it is a tempfile)
 
