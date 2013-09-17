@@ -7,7 +7,7 @@ embedded Robot Framework -tests during Sphinx-documentation compilation.
 Usage
 -----
 
-Add the followin lines into your Sphinx-project's ``conf.py``::
+Add the following lines into your Sphinx-project's ``conf.py``::
 
     extensions = ['sphinxcontrib_robotframework']
 
