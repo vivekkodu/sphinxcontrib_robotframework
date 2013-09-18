@@ -27,6 +27,7 @@ This is how it works:
 
    Take an annotated screenshot of RobotFramework.org
        Open browser  http://robotframework.org/  browser=${BROWSER}
+       Set window size  1280  900
        Update element style  header  margin-top  1em
        Update element style  header h1  outline  3px dotted red
        ${note1} =  Add note
