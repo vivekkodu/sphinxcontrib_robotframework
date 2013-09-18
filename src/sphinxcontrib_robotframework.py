@@ -69,7 +69,9 @@ def run_robot(app, doctree, docname):
     # artifacts don't exist:
     creates_paths = [os.path.join(robot_dir, x)
                      for x in getattr(doctree, '_robot_creates', [])]
-    if not False in map(bool, map(os.path.isfile, creates_paths)):
+    missing_paths = [path for path in creates_paths
+                     if not os.path.isfile(path)]
+    if creates_paths and not missing_paths:
         return
 
     # Tests are only run when they are found:
