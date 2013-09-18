@@ -6,6 +6,9 @@ annotation library (originally developed for ``plone.app.robotframework``),
 which allows to annotate any webpage with jQuery-library and capture cropped
 screenshot of the results.
 
+.. robotframework::
+   :creates: robotframework.png
+
 .. code:: robotframework
    :class: hidden
 
