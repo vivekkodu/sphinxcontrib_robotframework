@@ -88,7 +88,11 @@ def run_robot(app, doctree, docname):
         'outputdir': robot_dir,
         'output': 'NONE',
         'log': 'NONE',
-        'report': 'NONE'
+        'report': 'NONE',
+        'variable': [
+            '%s:%s' % key_value for key_value in
+            app.config.sphinxcontrib_robotframework_variables.items()
+        ]
     }
     robot.run(robot_file.name, **options)
 
@@ -106,6 +110,7 @@ def run_robot(app, doctree, docname):
 
 def setup(app):
     app.add_config_value('sphinxcontrib_robotframework_enabled', True, True)
+    app.add_config_value('sphinxcontrib_robotframework_variables', {}, True)
     app.add_directive('code', RobotAwareCodeBlock)
     app.add_directive('robotframework', RobotSettingsDirective)
     app.connect('doctree-resolved', run_robot)

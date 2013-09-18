@@ -14,10 +14,14 @@ this very Sphinx-documentation:
 
    Suite Teardown  Close all browsers
 
+   *** Variables ***
+
+   ${BROWSER}  Firefox
+
    *** Test Cases ***
 
    Capture a screenshot of RobotFramework.org
-       Open browser  http://robotframework.org/
+       Open browser  http://robotframework.org/  browser=${BROWSER}
        Capture page screenshot  robotframework.png
 
 Finally, to avoid the same screenshot being generated again and again, limit it

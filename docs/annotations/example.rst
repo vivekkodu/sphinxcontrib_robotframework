@@ -26,7 +26,7 @@ This is how it works:
    *** Test Cases ***
 
    Take an annotated screenshot of RobotFramework.org
-       Open browser  http://robotframework.org/
+       Open browser  http://robotframework.org/  browser=${BROWSER}
        Update element style  header  margin-top  1em
        Update element style  header h1  outline  3px dotted red
        ${note1} =  Add note

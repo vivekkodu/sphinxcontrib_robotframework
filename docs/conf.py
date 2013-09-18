@@ -7,6 +7,10 @@ extensions = [
 
 # Enable Robot Framework tests during Sphinx compilation.
 sphinxcontrib_robotframework_enabled = True
+# Tell tests to use PhantomJS
+sphinxcontrib_robotframework_variables = {
+    "BROWSER": "PhantomJS"
+}
 
 # The suffix of source filenames.
 source_suffix = '.rst'
