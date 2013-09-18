@@ -44,6 +44,18 @@ Usage
 
 4. Compile your documentation and see your tests being run.
 
+.. note::
+
+   If you choose to use Robot Framework variables in your test cases,
+   you can override values for those variables in your Sphinx-configuration
+   file (``conf.py``) with:
+
+   .. code:: python
+
+      sphinxcontrib_robotframework_variables = {
+          "VARIABLE": "value"
+      }
+
 Examples
 --------
 

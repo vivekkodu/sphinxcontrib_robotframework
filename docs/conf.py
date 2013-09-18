@@ -7,9 +7,10 @@ extensions = [
 
 # Enable Robot Framework tests during Sphinx compilation.
 sphinxcontrib_robotframework_enabled = True
-# Tell tests to use PhantomJS
+
+# Configure Robot Frameowrk tests to use Firefox
 sphinxcontrib_robotframework_variables = {
-    "BROWSER": "PhantomJS"
+    "BROWSER": "Firefox"
 }
 
 # The suffix of source filenames.
