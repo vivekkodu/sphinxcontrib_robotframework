@@ -1,26 +1,26 @@
-Example Robot Framework test
+Document with embedded tests
 ============================
 
-With the robot framework plain text syntax, a minimal test suite
-would consists of ``*** test cases ***`` header and at least
+With the Robot Framework space separated format, a minimal test suite
+would consists of ``*** Test Cases ***`` header and at least
 one test case, like:
 
 .. code:: robotframework
 
-   *** test cases ***
+   *** Test Cases ***
 
-   foo is always foo
-       should be equal  foo  foo
+   Foo is always foo
+       Should be equal  foo  foo
 
-one ``*** test cases ***``-header may be followed by as many
+One ``*** Test Cases ***``-header may be followed by as many
 tests as required, like:
 
 .. code:: robotframework
 
-   *** test cases ***
+   *** Test Cases ***
 
-   foo is still foo
-       should be equal  foo  foo
+   Foo is still foo
+       Should be equal  foo  foo
 
-   foo is never bar
-       should not be equal  foo  bar
+   Foo is never bar
+       Should not be equal  foo  bar

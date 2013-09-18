@@ -1,26 +1,47 @@
-Example Robot Framework test
-============================
+Document with a screenshot
+==========================
 
-With the robot framework plain text syntax, a minimal test suite
-would consists of ``*** test cases ***`` header and at least
-one test case, like:
-
-.. code:: robotframework
-
-   *** test cases ***
-
-   foo is always foo
-       should be equal  foo  foo
-
-one ``*** test cases ***``-header may be followed by as many
-tests as required, like:
+The fun with `sphinxcontrib-robotframework`_ starts in using it with
+`robotframework-selenium2library`_. Together, they allow you to navigate any
+website, take screenshots when required and finally embed those screenshot into
+this very Sphinx-documentation:
 
 .. code:: robotframework
 
-   *** test cases ***
+   *** Settings ***
 
-   foo is still foo
-       should be equal  foo  foo
+   Library  Selenium2Library
 
-   foo is never bar
-       should not be equal  foo  bar
+   Suite Teardown  Close all browsers
+
+   *** Test Cases ***
+
+   Capture a screenshot of RobotFramework.org
+       Open browser  http://robotframework.org/
+       Capture page screenshot  robotframework.png
+
+Finally, to avoid the same screenshot being generated again and again, limit it
+to be generated only once, by entirgn the following special
+``robotframework``-directive.
+
+.. code:: restructuredtext
+
+   .. robotframework::
+      :creates: robotframework.png
+
+This will limit tests in this document to be run only when the files expected
+to be created by Robot Framework do not exist.
+
+.. robotframework::
+   :creates: robotframework.png
+
+Isn't it beautiful:
+
+.. image:: robotframework.png
+   :width: 600
+
+.. Links:
+.. _sphinxcontrib-robotframework:
+   http://pypi.python.org/pypi/sphinxcontrib-robotframework
+.. _robotframework-selenium2library:
+   http://pypi.python.org/pypi/robotframework-selenium2library
