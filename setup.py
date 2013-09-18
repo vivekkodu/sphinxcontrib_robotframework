@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='sphinxcontrib-robotframework',
-    version='0.2.1.dev0',
+    version='0.3.1.dev0',
     description='Robot Framework plugin for Sphinx',
     url='http://github.com/vivekkodu/sphinxcontrib_robotframework',
     author='Vivek',
@@ -11,8 +11,8 @@ setup(
     py_modules=[
         'sphinxcontrib_robotframework'
     ],
-    packages=find_packages("src", exclude=["ez_setup"]),
-    package_dir={"": "src"},
+    packages=find_packages('src', exclude=['ez_setup']),
+    package_dir={'': 'src'},
     include_package_data=True,
     zip_safe=False,
     install_requires=[
@@ -21,8 +21,9 @@ setup(
         'robotframework',
         'Pygments',
     ],
-    extras_require={"docs": [
-        "robotframework-selenium2library",
-        "robotframework-selenium2screenshots[Pillow]",
+    extras_require={'docs': [
+        'robotframework',
+        'robotframework-selenium2library',
+        'robotframework-selenium2screenshots[Pillow]',
     ]}
 )
