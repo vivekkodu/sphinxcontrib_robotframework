@@ -1,1 +1,4 @@
+Pillow
+robotframework-selenium2screenshots
 sphixcontrib-robotframework
+
