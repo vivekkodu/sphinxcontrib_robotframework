@@ -1,5 +1,5 @@
 robotframework
-robotframework-selenium2library[Pillow]
+robotframework-selenium2library
 robotframework-selenium2screenshots[Pillow]
 sphixcontrib-robotframework
 
