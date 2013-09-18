@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='sphinxcontrib-robotframework',
-    version='0.2.1.dev0',
+    version='0.3.0',
     description='Robot Framework plugin for Sphinx',
     url='http://github.com/vivekkodu/sphinxcontrib_robotframework',
     author='Vivek',
