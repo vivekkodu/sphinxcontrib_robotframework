@@ -4,6 +4,8 @@ setup(
     name='sphinxcontrib-robotframework',
     version='0.3.1.dev0',
     description='Robot Framework plugin for Sphinx',
+    long_description=(open("README.rst").read() + "\n" +
+                      open("CHANGES.txt").read()),
     url='http://github.com/vivekkodu/sphinxcontrib_robotframework',
     author='Vivek',
     author_email='1990vivekkumarverma@gmail.com',
