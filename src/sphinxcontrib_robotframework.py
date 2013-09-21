@@ -100,12 +100,14 @@ def run_robot(app, doctree, docname):
     robot_file.close()
 
     # Re-process images to include robot generated images:
-    if not os.path.sep in docname:
-        app.env.process_images(docname, doctree)
-    else:
-        # XXX: Not sure why, but this seems to be necessary to properly
-        # locate images in a large Sphinx-documentation
-        app.env.process_images(os.path.dirname(docname), doctree)
+    if os.path.sep in docname:
+        # Because process_images is not designed to be called more than once,
+        # calling it with docnames with sub-directories needs a bit cleanup:
+        removable = os.path.dirname(docname) + os.path.sep
+        for node in doctree.traverse(docutils.nodes.image):
+            if node['uri'].startswith(removable):
+                node['uri'] = node['uri'][len(removable):]
+    app.env.process_images(docname, doctree)
 
 
 def setup(app):
